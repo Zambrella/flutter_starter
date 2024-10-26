@@ -13,8 +13,10 @@ part 'repository_providers.g.dart';
 @Riverpod(keepAlive: true)
 SharedPreferences sharedPreferences(Ref ref) {
   // requiredValue is possible because `appDependenciesProvider` is loaded in `lib/app.dart`
-  return ref.watch(appDependenciesProvider
-      .select((deps) => deps.requireValue.sharedPreferences));
+  return ref.watch(
+    appDependenciesProvider
+        .select((deps) => deps.requireValue.sharedPreferences),
+  );
 }
 
 @Riverpod(keepAlive: true)
