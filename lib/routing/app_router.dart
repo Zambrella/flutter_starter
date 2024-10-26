@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_starter_template/authentication/presentation/pages/login_page.dart';
 import 'package:flutter_starter_template/authentication/presentation/pages/register_page.dart';
 import 'package:flutter_starter_template/authentication/providers/authentication_providers.dart';
 import 'package:flutter_starter_template/home/presentation/home_page.dart';
-import 'package:flutter_starter_template/routing/go_router_refresh_stream.dart';
 import 'package:flutter_starter_template/routing/not_found_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -11,7 +11,8 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'app_router.g.dart';
 
 // private navigators
-final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'rootNavigator');
+final _rootNavigatorKey =
+    GlobalKey<NavigatorState>(debugLabel: 'rootNavigator');
 
 enum AppRoute {
   login,
@@ -21,13 +22,11 @@ enum AppRoute {
 }
 
 @Riverpod(keepAlive: true)
-GoRouter goRouter(GoRouterRef ref) {
+GoRouter goRouter(Ref ref) {
   return GoRouter(
-    initialLocation: '/home',
+    initialLocation: '/',
     navigatorKey: _rootNavigatorKey,
     debugLogDiagnostics: true,
-    // ignore: deprecated_member_use
-    refreshListenable: GoRouterRefreshStream(ref.watch(authStateChangesProvider.stream)),
     redirect: (context, state) {
       final path = state.uri.path;
       final isLoggedIn = ref.read(currentUserProvider) != null;
@@ -73,7 +72,7 @@ GoRouter goRouter(GoRouterRef ref) {
         ),
       ),
       GoRoute(
-        path: '/home',
+        path: '/',
         name: AppRoute.home.name,
         pageBuilder: (context, state) => const NoTransitionPage(
           child: HomePage(),

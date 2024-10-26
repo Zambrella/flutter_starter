@@ -1,16 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_starter_template/l10n/gen_l10n/app_localizations.dart';
 import 'package:flutter_starter_template/theme/theme.dart';
 import 'package:toastification/toastification.dart';
 
 extension ToastificationX on Toastification {
-  ToastificationItem showSuccess({required BuildContext context, required String message}) {
+  ToastificationItem showSuccess({
+    required BuildContext context,
+    required String message,
+  }) {
+    final loc = AppLocalizations.of(context);
     return show(
       context: context,
-      title: Text(message),
+      title: Text(
+        loc.success,
+        style: context.theme.textTheme.titleMedium!.copyWith(
+          color: context.theme.semanticColors.success,
+        ),
+      ),
+      description: Text(
+        message,
+        style: context.theme.textTheme.bodyMedium!.copyWith(
+          color: context.theme.semanticColors.success,
+        ),
+      ),
       type: ToastificationType.success,
       style: ToastificationStyle.flatColored,
       primaryColor: context.theme.semanticColors.success,
-      backgroundColor: HSLColor.fromColor(context.theme.semanticColors.success).withLightness(0.98).toColor(),
+      backgroundColor: context.theme.colorScheme.surfaceContainer,
       foregroundColor: context.theme.semanticColors.success,
       autoCloseDuration: const Duration(seconds: 5),
       borderRadius: BorderRadius.circular(context.theme.appRadius.medium),
@@ -25,14 +41,29 @@ extension ToastificationX on Toastification {
     );
   }
 
-  ToastificationItem showWarning({required BuildContext context, required String message}) {
+  ToastificationItem showWarning({
+    required BuildContext context,
+    required String message,
+  }) {
+    final loc = AppLocalizations.of(context);
     return show(
       context: context,
-      title: Text(message),
-      type: ToastificationType.success,
+      title: Text(
+        loc.warning,
+        style: context.theme.textTheme.titleMedium!.copyWith(
+          color: context.theme.semanticColors.warning,
+        ),
+      ),
+      description: Text(
+        message,
+        style: context.theme.textTheme.bodyMedium!.copyWith(
+          color: context.theme.semanticColors.warning,
+        ),
+      ),
+      type: ToastificationType.warning,
       style: ToastificationStyle.flatColored,
       primaryColor: context.theme.semanticColors.warning,
-      backgroundColor: HSLColor.fromColor(context.theme.semanticColors.warning).withLightness(0.98).toColor(),
+      backgroundColor: context.theme.colorScheme.surfaceContainer,
       foregroundColor: context.theme.semanticColors.warning,
       autoCloseDuration: const Duration(seconds: 5),
       borderRadius: BorderRadius.circular(context.theme.appRadius.medium),
@@ -47,14 +78,29 @@ extension ToastificationX on Toastification {
     );
   }
 
-  ToastificationItem showError({required BuildContext context, required String message}) {
+  ToastificationItem showError({
+    required BuildContext context,
+    required String message,
+  }) {
+    final loc = AppLocalizations.of(context);
     return show(
       context: context,
-      title: Text(message),
+      title: Text(
+        loc.error,
+        style: context.theme.textTheme.titleMedium!.copyWith(
+          color: context.theme.semanticColors.error,
+        ),
+      ),
+      description: Text(
+        message,
+        style: context.theme.textTheme.bodyMedium!.copyWith(
+          color: context.theme.semanticColors.error,
+        ),
+      ),
       type: ToastificationType.error,
       style: ToastificationStyle.flatColored,
       primaryColor: context.theme.semanticColors.error,
-      backgroundColor: HSLColor.fromColor(context.theme.semanticColors.error).withLightness(0.98).toColor(),
+      backgroundColor: context.theme.colorScheme.surfaceContainer,
       foregroundColor: context.theme.semanticColors.error,
       borderRadius: BorderRadius.circular(context.theme.appRadius.medium),
       progressBarTheme: ProgressIndicatorThemeData(

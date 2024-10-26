@@ -6,7 +6,7 @@ part of 'authentication_providers.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$authStateChangesHash() => r'3c8a0f0921fe975ebab001bf5bc5ad33d2528855';
+String _$authStateChangesHash() => r'fa5e242ee2e832891a90e58f0e2ccfee9757c5e0';
 
 /// See also [authStateChanges].
 @ProviderFor(authStateChanges)
@@ -21,7 +21,7 @@ final authStateChangesProvider = StreamProvider<AppUser?>.internal(
 );
 
 typedef AuthStateChangesRef = StreamProviderRef<AppUser?>;
-String _$currentUserHash() => r'f1857813c32d13bf9ee6d9a89039646edcc90ed8';
+String _$currentUserHash() => r'67902188fdc80b1a9f432a41d84e5e34cf37ed25';
 
 /// See also [currentUser].
 @ProviderFor(currentUser)

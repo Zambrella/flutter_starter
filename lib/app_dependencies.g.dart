@@ -6,7 +6,7 @@ part of 'app_dependencies.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$appDependenciesHash() => r'b057a9c4b5457ca79fc9e3561e49aa61b1b1f12a';
+String _$appDependenciesHash() => r'83be8b2b7653ca71c59c333232b1e353ba1294d9';
 
 /// See also [appDependencies].
 @ProviderFor(appDependencies)
@@ -22,7 +22,7 @@ final appDependenciesProvider = FutureProvider<AppDependencies>.internal(
 
 typedef AppDependenciesRef = FutureProviderRef<AppDependencies>;
 String _$serviceInitialisationHash() =>
-    r'3f1b2047ebeb82fb9e437935949f436ad3203f2b';
+    r'91e6661c76bcedb6d80f46f2b3c99c8ae23c4b51';
 
 /// See also [serviceInitialisation].
 @ProviderFor(serviceInitialisation)
@@ -38,7 +38,7 @@ final serviceInitialisationProvider = AutoDisposeFutureProvider<void>.internal(
 
 typedef ServiceInitialisationRef = AutoDisposeFutureProviderRef<void>;
 String _$errorLoggingRepositoryHash() =>
-    r'ecb10c592fcb008a6fe1e995cea7dc3fc7832853';
+    r'84e3d1bd0474bf5e5f4eb1e0ff7e9a17b3680cdb';
 
 /// See also [errorLoggingRepository].
 @ProviderFor(errorLoggingRepository)
@@ -54,7 +54,7 @@ final errorLoggingRepositoryProvider =
 );
 
 typedef ErrorLoggingRepositoryRef = ProviderRef<ErrorLoggingRepository>;
-String _$loggerHash() => r'48c834e987ad5b38414759ec339da328e1c71db7';
+String _$loggerHash() => r'23432406a92d3fa4807782cdc94e1b0666451b08';
 
 /// See also [logger].
 @ProviderFor(logger)
@@ -68,7 +68,7 @@ final loggerProvider = Provider<Logger>.internal(
 );
 
 typedef LoggerRef = ProviderRef<Logger>;
-String _$flavorHash() => r'35980e94652eeb65673074b7d0a78565bfd6ff95';
+String _$flavorHash() => r'034afac5cb627981977cb9398af6b8329eb70c03';
 
 /// See also [flavor].
 @ProviderFor(flavor)

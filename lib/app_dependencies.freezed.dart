@@ -21,7 +21,9 @@ mixin _$AppDependencies {
   SharedPreferences get sharedPreferences => throw _privateConstructorUsedError;
   Version get appVersion => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppDependencies
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AppDependenciesCopyWith<AppDependencies> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +51,8 @@ class _$AppDependenciesCopyWithImpl<$Res, $Val extends AppDependencies>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AppDependencies
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -101,6 +105,8 @@ class __$$AppDependenciesImplCopyWithImpl<$Res>
       _$AppDependenciesImpl _value, $Res Function(_$AppDependenciesImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AppDependencies
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -185,7 +191,9 @@ class _$AppDependenciesImpl
   int get hashCode => Object.hash(
       runtimeType, packageInfo, deviceInfo, sharedPreferences, appVersion);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppDependencies
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AppDependenciesImplCopyWith<_$AppDependenciesImpl> get copyWith =>
@@ -208,8 +216,11 @@ abstract class _AppDependencies implements AppDependencies {
   SharedPreferences get sharedPreferences;
   @override
   Version get appVersion;
+
+  /// Create a copy of AppDependencies
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AppDependenciesImplCopyWith<_$AppDependenciesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

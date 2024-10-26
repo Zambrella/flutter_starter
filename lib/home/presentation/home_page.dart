@@ -2,11 +2,13 @@ import 'package:data_privacy/data_privacy.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_starter_template/authentication/presentation/controllers/logout_controller.dart';
+import 'package:flutter_starter_template/common/common.dart';
 import 'package:flutter_starter_template/repository_providers.dart';
 import 'package:flutter_starter_template/routing/app_router.dart';
 import 'package:flutter_starter_template/theme/selected_theme.dart';
 import 'package:flutter_starter_template/theme/theme_extensions.dart';
 import 'package:go_router/go_router.dart';
+import 'package:toastification/toastification.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
@@ -62,7 +64,9 @@ class _HomePageState extends ConsumerState<HomePage> {
                   ),
                 );
                 if (settings != null) {
-                  await ref.read(dataPrivacyRepositoryProvider).savePrivacySettings(settings);
+                  await ref
+                      .read(dataPrivacyRepositoryProvider)
+                      .savePrivacySettings(settings);
                 }
               },
               child: const Text('Enable tracking'),
@@ -76,7 +80,10 @@ class _HomePageState extends ConsumerState<HomePage> {
             ElevatedButton(
               onPressed: () {
                 ref.read(selectedThemeProvider.notifier).setThemeMode(
-                      ref.read(selectedThemeProvider).requireValue == ThemeMode.dark ? ThemeMode.light : ThemeMode.dark,
+                      ref.read(selectedThemeProvider).requireValue ==
+                              ThemeMode.dark
+                          ? ThemeMode.light
+                          : ThemeMode.dark,
                     );
               },
               child: const Text('Switch theme'),
@@ -90,7 +97,12 @@ class _HomePageState extends ConsumerState<HomePage> {
               ),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                toastification.showError(
+                  context: context,
+                  message: 'This is an error message',
+                );
+              },
               child: const Text('Text Button'),
             ),
             Switch(

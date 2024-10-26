@@ -6,7 +6,7 @@ part of 'repository_providers.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$sharedPreferencesHash() => r'17c969d773da672bf51c390b052143c6e7569cde';
+String _$sharedPreferencesHash() => r'c440e40e6cfae8779d47ef2dbd054e9e391b233a';
 
 /// See also [sharedPreferences].
 @ProviderFor(sharedPreferences)
@@ -21,7 +21,7 @@ final sharedPreferencesProvider = Provider<SharedPreferences>.internal(
 );
 
 typedef SharedPreferencesRef = ProviderRef<SharedPreferences>;
-String _$authRepositoryHash() => r'0f0aea8947c951d7946110cb9f6ecaa1ea21237b';
+String _$authRepositoryHash() => r'9e22647e139dbff5cfe60fe7d6f79a640056145d';
 
 /// See also [authRepository].
 @ProviderFor(authRepository)
@@ -37,7 +37,7 @@ final authRepositoryProvider = Provider<AuthRepository>.internal(
 
 typedef AuthRepositoryRef = ProviderRef<AuthRepository>;
 String _$analyticsRepositoryHash() =>
-    r'3412ce99a6bcc65dcf22c596f621d2ab9320e685';
+    r'0b9d09c28109ca5143d4960c211bde87b3fefea4';
 
 /// See also [analyticsRepository].
 @ProviderFor(analyticsRepository)
@@ -53,7 +53,7 @@ final analyticsRepositoryProvider = Provider<AnalyticsRepository>.internal(
 
 typedef AnalyticsRepositoryRef = ProviderRef<AnalyticsRepository>;
 String _$purchasesRepositoryHash() =>
-    r'f26e559e55456aa0c52b0184a2f67d0173617fd4';
+    r'35bcdcc703a6fa53a2be8f731a36d7853a8fe867';
 
 /// See also [purchasesRepository].
 @ProviderFor(purchasesRepository)
@@ -69,7 +69,7 @@ final purchasesRepositoryProvider = Provider<PurchasesRepository>.internal(
 
 typedef PurchasesRepositoryRef = ProviderRef<PurchasesRepository>;
 String _$dataPrivacyRepositoryHash() =>
-    r'1b0189c94389cff9f99fc7d0ad0f69bf5dbfbee1';
+    r'2d86d0bea3fb284d34f062eea260c7ef8da37de9';
 
 /// See also [dataPrivacyRepository].
 @ProviderFor(dataPrivacyRepository)

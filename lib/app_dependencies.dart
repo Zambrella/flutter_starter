@@ -8,6 +8,7 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:error_logging_core/error_logging_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_starter_template/authentication/providers/authentication_providers.dart';
 import 'package:flutter_starter_template/flavors.dart';
 import 'package:flutter_starter_template/repository_providers.dart';
@@ -31,12 +32,11 @@ class AppDependencies with _$AppDependencies {
   }) = _AppDependencies;
 }
 
-// Created two separate providers because some of the dependencies inside the appDependenciesProvider
-// are needed by some of the providers in the serviceInitialisationProvider.
+// Created two separate providers because some of the dependencies inside the appDepenRef are needed by some of the providers in the serviceInitialisationProvider.
 
 @Riverpod(keepAlive: true)
 Future<AppDependencies> appDependencies(
-  AppDependenciesRef ref,
+  Ref ref,
 ) async {
   final flavor = ref.read(flavorProvider);
   final logger = ref.read(loggerProvider);
@@ -77,7 +77,7 @@ Future<AppDependencies> appDependencies(
 }
 
 @riverpod
-FutureOr<void> serviceInitialisation(ServiceInitialisationRef ref) async {
+FutureOr<void> serviceInitialisation(Ref ref) async {
   await ref.watch(appDependenciesProvider.future);
   final logger = ref.read(loggerProvider);
   // ignore: cascade_invocations
@@ -85,7 +85,7 @@ FutureOr<void> serviceInitialisation(ServiceInitialisationRef ref) async {
 
   // Waiting for the intial auth event to complete to prevent potential of going from loading -> unauthenticated -> authenticated
   // when the user is already authenticated, it's just that the auth state hasn't been emitted yet.
-  final _ = await ref.read(authStateChangesProvider.future);
+  final _ = ref.read(authStateChangesProvider);
 
   // Initialize services
   await ref.read(errorLoggingRepositoryProvider).init();
@@ -93,14 +93,21 @@ FutureOr<void> serviceInitialisation(ServiceInitialisationRef ref) async {
   await ref.read(purchasesRepositoryProvider).init(isDebugMode: kDebugMode);
 
   // Fetch the opt-in settings and enable/disable services accordingly
-  final optInSettings = await ref.read(dataPrivacyRepositoryProvider).fetchPrivacySettings();
+  final optInSettings =
+      await ref.read(dataPrivacyRepositoryProvider).fetchPrivacySettings();
   if (optInSettings != null) {
     if (optInSettings.basic) {
       await ref.read(analyticsRepositoryProvider).enableAnalytics(enable: true);
-      await ref.read(errorLoggingRepositoryProvider).enableLogging(enable: true);
+      await ref
+          .read(errorLoggingRepositoryProvider)
+          .enableLogging(enable: true);
     } else {
-      await ref.read(analyticsRepositoryProvider).enableAnalytics(enable: false);
-      await ref.read(errorLoggingRepositoryProvider).enableLogging(enable: false);
+      await ref
+          .read(analyticsRepositoryProvider)
+          .enableAnalytics(enable: false);
+      await ref
+          .read(errorLoggingRepositoryProvider)
+          .enableLogging(enable: false);
     }
   }
 
@@ -108,19 +115,19 @@ FutureOr<void> serviceInitialisation(ServiceInitialisationRef ref) async {
 }
 
 @Riverpod(keepAlive: true)
-ErrorLoggingRepository errorLoggingRepository(ErrorLoggingRepositoryRef ref) {
+ErrorLoggingRepository errorLoggingRepository(Ref ref) {
   // Overriden in lib/bootstrap.dart
   throw UnimplementedError();
 }
 
 @Riverpod(keepAlive: true)
-Logger logger(LoggerRef ref) {
+Logger logger(Ref ref) {
   // Overriden in lib/bootstrap.dart
   throw UnimplementedError();
 }
 
 @Riverpod(keepAlive: true)
-Flavor flavor(FlavorRef ref) {
+Flavor flavor(Ref ref) {
   // Overriden in lib/bootstrap.dart
   throw UnimplementedError();
 }

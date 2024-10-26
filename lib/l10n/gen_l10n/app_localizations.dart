@@ -7,6 +7,8 @@ import 'package:intl/intl.dart' as intl;
 
 import 'app_localizations_en.dart';
 
+// ignore_for_file: type=lint
+
 /// Callers can lookup localized strings with an instance of AppLocalizations
 /// returned by `AppLocalizations.of(context)`.
 ///
@@ -156,6 +158,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'An unknown error occurred'**
   String get unknownError;
+
+  /// No description provided for @success.
+  ///
+  /// In en, this message translates to:
+  /// **'Success'**
+  String get success;
+
+  /// No description provided for @warning.
+  ///
+  /// In en, this message translates to:
+  /// **'Warning'**
+  String get warning;
+
+  /// No description provided for @error.
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get error;
 
   /// No description provided for @subscriptionLengthOneWeek.
   ///

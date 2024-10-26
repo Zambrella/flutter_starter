@@ -1,5 +1,7 @@
 import 'app_localizations.dart';
 
+// ignore_for_file: type=lint
+
 /// The translations for English (`en`).
 class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
@@ -36,6 +38,15 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get unknownError => 'An unknown error occurred';
+
+  @override
+  String get success => 'Success';
+
+  @override
+  String get warning => 'Warning';
+
+  @override
+  String get error => 'Error';
 
   @override
   String get subscriptionLengthOneWeek => 'Weekly';
